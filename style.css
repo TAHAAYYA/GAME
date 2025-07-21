@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #1a1a1a, #000);
+  color: white;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: rotateBg 60s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotateBg {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.card {
+  position: relative;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 2rem;
+  border: 2px solid #8b5cf6;
+  border-radius: 1rem;
+  text-align: center;
+  max-width: 90%;
+  animation: pulseCard 2s infinite;
+  z-index: 1;
+}
+
+@keyframes pulseCard {
+  0%, 100% { box-shadow: 0 0 20px #8b5cf6; }
+  50% { box-shadow: 0 0 40px #c084fc; }
+}
+
+.button {
+  position: absolute;
+  background: linear-gradient(to right, #f43f5e, #d946ef);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+  animation: floatButton 2s ease-in-out infinite;
+}
+
+@keyframes floatButton {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.button:hover {
+  transform: scale(1.2);
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.popup-content {
+  background: white;
+  color: #111;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  animation: scaleIn 0.5s;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.5); }
+  to { transform: scale(1); }
+}
